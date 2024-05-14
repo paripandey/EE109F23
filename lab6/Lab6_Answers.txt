@@ -1,0 +1,56 @@
+			      EE 109  - Fall 2023
+			   Lab 6 - Digital Stopwatch
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+1. (2 points) Review the conceptual operation of a timer interrupt.
+
+  a. For a 16-bit timer with clock frequency of 16MHz (like the Arduino) and
+  prescalar of 64, how much time corresponds to a timer value of 2000?
+
+  ANSWER:
+    (16 * 10^6 * x)/64 = 2000
+    x = (2000 * 64)/(16 * 10^6)
+
+    Rearranging this equation to solve for x gives us 0.008 seconds or 8 milliseconds.
+
+  b. With a clock frequency of 16MHz and prescalar of 8, what is the longest
+  amount of time we can track with an 8-bit hardware timer.
+
+  ANSWER: 
+    (16 * 10^6) / 8 = 2 * 10^6 = new clock frequency
+    1/new clock frequency = time = 0.5 microseconds
+
+    Maximum value that a 8-bit number can have = 255
+
+    255 * 0.5 = 127.5 microseconds
+  
+
+2. (2 points) The Timer modules we have used also have the ability to make an
+output pin turn ON (set), OFF (clear), or Toggle when the timer reaches the
+OCR1A or OCR1B values (i.e. the hardware can automatically control the output
+value of a pin). By searching the data sheet (ATmega328P datasheet is linked on
+our website from the Tools and Links page) answer the following question:
+
+   a.  TIMER1 (the 16-bit timer) can control the pins that are associated with
+   OC1A and OC1B signals. Find to what pins these signals are wired by looking
+   at Figure 1.1 ("28 PDIP" package diagram) on page 12 of the data sheet, or
+   alternatively, Tables 14-3, 14-6, or 14-9.
+
+    ANSWER: PB1 and PB2.
+
+
+   b.  In this lab we use TIMER1 in the "Clear Timer on Compare" or CTC
+   mode. In this mode when the counter reaches the value in OCR1A register it
+   generates an interrupt and starts counting again from zero. Using the
+   information in section 16.11.1 and table 16-1, describe what the OC1A and
+   OC1B pins would do when the timer reaches the OCR1A value if during
+   initialization we used the statement TCCR1A = 0x60;
+
+    ANSWER:
+
+    0x60 corresponds to 01100000. This means the COM1A0 and COM1B1 bit are written to 1.
+    Based on the combination in the table, OC1A will be toggled on Compare Match. Conversely, OC1B will
+    be cleared on Compare Match. Basically, the OC1A and OC1B outputs override the normal port
+    functionality of the I/O pins that they're connected to, respectively.

@@ -1,0 +1,113 @@
+			      EE 109 - Fall 2023
+                          Lab 2 - Scopes and Signals
+
+Edit the document below to fill your answers from the exercises done in lab.
+Be sure to include the proper units, such as "1 kHz", or "200 msec"
+
+Note: Don't use special characters like Greek "mu" or "Omega" symbols in your
+answers.  These don't display correctly on Vocareum and can make it hard to
+grade the answers.  For example, if you need to specify units of microseconds,
+just type "microseconds" or "usecs".
+
+
+1. (5 points) Fill out the following table for outputs A0 and A1. The duty
+cycle of a signal is the ratio (expressed as a percentage) of the time the
+signal is in the high state to the period of the signal.
+
+    Bit     Time in 1 state     Time in 0 state     Period                  Frequency       Duty cycle
+
+    A0      1200 microseconds   380 microseconds    1580 microseconds       632.91 Hz       75.9%
+
+    A1      600 microseconds    2600 microseconds   3200 microseconds       312.5 Hz        18.75%
+
+
+CHECKPOINT: Show a CP your measurements of the two periodic signals to
+received the bonus points.
+
+
+2. (2 points) What is the range of the width of the A2 pulse that you observed?
+
+    Narrowest:      0.66 milliseconds
+
+    Widest:         2.66 milliseconds
+
+
+3. (2 points) What is the approximate time delay from the input to the output
+of the NOT gate?
+    4.6 nanoseconds
+
+4. (5 points) Fill in the table below with the input voltages to the 74HCT04
+inverter and the resulting output voltage,
+
+   Input voltage        Output voltage
+        0.0                   4.9898 V
+        0.2                   4.9910 V
+        0.4                   4.9899 V
+        0.6                   4.9909 V
+        0.8                   4.9912 V
+        1.0                   4.9917 V
+        1.1                   4.9933 V
+        1.2                   4.9926 V
+        1.3                   11.246 mV
+        1.4                   7.679 mV
+        1.5                   7.209 mV
+        1.6                   7.139 mV
+        1.7                   7.052 mV
+        1.8                   6.971 mV
+        2.0                   6.824 mV
+        2.2                   6.703 mV
+        2.4                   6.599 mV
+        2.6                   6.499 mV
+        2.8                   6.415 mV
+        3.0                   6.336 mV
+        4.0                   6.158 mV
+        5.0                   6.144 mV
+
+
+
+                          ---- Review Questions ----
+
+1. (3 points) Suppose you wanted to measure the frequency of a note played by
+a piano and sensed from a microphone connected/viewed on an oscilloscope.
+Answer the following True/False questions with a brief explanation.
+
+     a. True/False: To measure the frequency, the vertical scale of the
+     oscilloscope would be of more use than the horizontal scale.
+
+        FALSE. The horizontal scale represents the time scale of the oscilloscope.
+        As this helps us measure the timing/period of the respective signals,
+        it will consequently help us measure the frequency.
+
+     b. True/False: Since the note is played for a short time period, we
+     should set the triggering to "Single" rather than "Run".
+     
+        TRUE. This signal (aka. a pulse) is not periodic, being in the low
+        state most of the time but occasionally going high for a short time.
+        It appears at random times, and the pulse width and the time it is
+        in the high state, varies slightly each time. We want to capture a
+        single instance of the note being played.
+
+     c. True/False: If the signal ranges between 0V and 2.5V, the trigger
+     level should ideally be set around 1.25V.
+
+        FALSE. While this would make sure the oscilloscope triggers on the falling/rising
+        edge of the signal, the "ideal" trigger level may depend on the signal's
+        specific characteristics to help capture the desired part of the waveform.
+
+2. (2 points) Each scope probe has a short black ground wire attached to it.
+Why is it necessary to connect this to the circuit's ground point in order to
+make a measurement?
+
+    Because it will establish a common (ground) reference point for the
+    measurement. It ensures that the measurements are referenced to the same electrical
+    potential as the circuit being measured. Otherwise, the
+    oscilloscope wouldn't have a proper reference, and the measurements would
+    be inaccurate and potentially misleading.
+
+
+3. (1 point) If you have used the Horizontal Position control to move the
+trigger point horizontally so much that you can no longer see the trigger point
+on the screen, what is the quick way to restore the trigger point back to the
+middle of the screen?
+
+    Pressing the horizontal position knob.

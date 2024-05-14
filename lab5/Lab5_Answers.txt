@@ -1,0 +1,72 @@
+			      EE 109 - Fall 2023
+		     Lab 5 - Analog to Digital Conversion
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (1 point) To ensure a date appears in the format: MM/DD, what snprintf()
+formatting string could be used to ensure dates like 6/9 are generated in a
+character buffer as 06/09.
+
+	char buf[17];
+	int m = 6; d = 9;
+	snprintf(buf, 17, "%02d/%02d", m, d);
+
+
+1. (3 points) Review the conceptual operation of an ADC and use the given
+parameters to find the desired value.
+
+  a. Your 8-bit ADC has Hi and Lo reference voltages of 1V and 4V, what digital
+  number would result from sampling a 2.0V?
+
+  ANSWER:
+
+    Method is to set up a linear equation. 
+    y represents the input voltage.
+    x represents the digital number.
+    f(x) represents the relatonship between the digital number and the input voltage.
+    The smallest 8-bit number, 0000 0000, corresponds to the Lo reference voltage: (0, 1)
+    The highest 8-bit number, 1111 1111 (decimal: 255), corresponds to the Hi reference voltage: (255, 4)
+
+    y = f(x) = (4-1)(x)/(2^8-1) + 1 = 3x/255 + 1
+
+    Basically, what is x when y = 2?
+    
+    (2 - 1) * 255/3 = x = 85
+  
+  Therefore, the digital number is 85.
+
+  
+  b. Your 5-bit ADC has Hi and Lo reference voltages of 0V and 5V, what input
+  voltage would yield a digital number of 12?
+
+  ANSWER:
+    Same method and variables as the previous question.
+    The smallest 5-bit number, 00000, corresponds to the Lo reference voltage: (0, 0)
+    The highest 5-bit number, 11111 (decimal: 31), corresponds to the Hi reference voltage: (31, 5)
+
+    y = f(x) = (5)(x)/(2^5-1) = 5x/31
+
+    What is y when x = 12?
+    
+    y = f(12) = 60/31 = 1.93
+
+  Therefore, the answer is 1.93V.
+
+
+  c.  Your 6-bit ADC has a Lo reference voltages of 2V. A voltage is sampled at
+  2.4V and the digital result is 26. What was the Hi reference voltage used by
+  the ADC?
+
+  ANSWER:
+    Same method and variables as the previous question.
+    The smallest 6-bit number, 000000, corresponds to the Lo reference voltage: (0, 2)
+    The highest 6-bit number, 111111 (decimal: 63), corresponds to the Hi reference voltage: (63, ?)
+
+    y = 2.4, x = 26 ->
+
+    2.4 = (Hi - 2)(26)/(63) + 2
+    (2.4 - 2)*63/26 + 2 = Hi = 2.96V
+
+  Therefore, the answer is 2.96V.

@@ -1,0 +1,46 @@
+			      EE 109 - Fall 2023
+			Lab 8 - Pulse Width Modulation
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (2 point) Billy Bruin wants to control a servo motor like the one used in
+this lab but only has the 8-bit Timer/Counter0 available to use to generate the
+PWM signal.  He says this won't work since the maximum pulse period you can get
+from the 8-bit timer is 16.4ms and servo motors need PWM signals with a 20ms
+period. Tammy Trojan decides to try using the 8-bit timer anyway just to see if
+it will work.  Assuming she sets it up for the maximum period of 16.4ms, what
+values will she have to put in the OCR0A register to generate the minimum pulse
+width of 0.75ms, and the maximum pulse width of 2.25ms?
+
+ANSWER:
+	Formula for the count: time * clock rate / prescalar
+
+	Using maximum prescalar of 1024:
+
+		(0.75E-3 * 16 * 10^6 / 1024) = 11.72 = around 11 for the minimum pulse width
+
+		(2.25E-3 * 16 * 10^6 / 1024) = 35.16 = around 35 for the maximum pulse width
+
+
+2. (1 point) When Timer/Counter1 is counting, the count value is kept in the
+TCNT1 register and is constantly being compared for equality (and only
+equality) to the values in the OCR1B and OCR1A registers to determine when to
+terminate the PWM pulse or to end one pulse period and start the next. Suppose
+at some point your program adjusts the PWM width by changing the OCR1B
+register, and the new OCR1B value is lower than the value that is currently in
+the TCNT1 register.  What will happen to the output signal during this pulse
+period?
+
+ANSWER:
+	The output signal stays HIGH (at 1) for the whole pulse period.
+	This is because the equality never happens between TCINT1 and OCR1B (TCINT1 > OCR1B).
+	Therefore, the output signal will not go LOW (to 0).
+
+
+
+
+
+
+

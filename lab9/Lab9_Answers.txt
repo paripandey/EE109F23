@@ -1,0 +1,37 @@
+			      EE 109 - Fall 2023
+		     Lab 9 - Hardware Datapath Components
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (1 point) Tammy Trojan feels the gap between the MID brightness using a
+37.5% PWM signal and the BRIGHT level at 100% is too much and wants to add a
+fourth brightness level at 75% called "LIT".  In our circuit where a low signal
+turns the LED on, this means she needs to create a signal that is low 75% of
+the time, or a one 25% of the time. Assuming you had access to additional gates
+to add to the circuit, how could you create this signal?  Write the Boolean
+logic express for LIT in terms of the output signals from the counter.
+
+	ANSWER:
+		This means either 0000 to 0011 are minterms, or 1100 to 1111 are minterms.
+		This yields POS expressions (!QD • !QC) and (QD • QC), respectively.
+		Assuming we want a NAND-to-NAND implementation, we can take POS (QD • QC) and
+		OR it with an AND gate that takes ground (O) as at least 1 of the inputs. If
+		we invert the inputs of the OR gate, then we get (QD NAND QC) AND (0 NAND 0).
+		We can make this (QD NAND QC) NAND (0 NAND 0) and then just invert the output
+		with another NAND gate. This is a total of 4 NAND gates with another 74HCT00.
+
+2. (1 point) We would like to add a feature where if the Select button is
+pressed on the LCD, it turns the LED off completely, and then turns it back on
+when Select is pressed again.  Explain how this could be done without having to
+make any changes to the wiring of the circuit.
+
+
+
+
+
+
+
+
+
